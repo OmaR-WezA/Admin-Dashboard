@@ -24,7 +24,7 @@ TEMPLATE_FILENAME = "whatsapp_template.xlsx"
 try:
     cred = credentials.Certificate("firebase-key.json")
     firebase_admin.initialize_app(cred, {
-        'databaseURL': 'https://your-project.firebaseio.com'
+        'databaseURL': 'https://whatsapp-sender-admin-default-rtdb.firebaseio.com/'
     })
 except:
     print("Firebase not configured. Admin dashboard features disabled.")

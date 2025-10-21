@@ -78,43 +78,45 @@ export function UpdateManager() {
     <div className="space-y-6">
       <Card className="bg-card border-border">
         <CardHeader>
-          <CardTitle>Publish New Update</CardTitle>
-          <CardDescription>Distribute new versions to all connected devices</CardDescription>
+          <CardTitle className="text-foreground">Publish New Update</CardTitle>
+          <CardDescription className="text-muted-foreground">
+            Distribute new versions to all connected devices
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handlePublishUpdate} className="space-y-4">
             <div>
-              <label className="text-sm font-medium">Version Number</label>
+              <label className="text-sm font-medium text-foreground">Version Number</label>
               <Input
                 placeholder="1.2.0"
                 value={version}
                 onChange={(e) => setVersion(e.target.value)}
-                className="mt-1 bg-background border-border"
+                className="mt-1 bg-background border-border text-foreground placeholder:text-muted-foreground"
               />
             </div>
             <div>
-              <label className="text-sm font-medium">Download URL</label>
+              <label className="text-sm font-medium text-foreground">Download URL</label>
               <Input
                 placeholder="https://example.com/app-1.2.0.exe"
                 value={downloadUrl}
                 onChange={(e) => setDownloadUrl(e.target.value)}
-                className="mt-1 bg-background border-border"
+                className="mt-1 bg-background border-border text-foreground placeholder:text-muted-foreground"
               />
             </div>
             <div>
-              <label className="text-sm font-medium">Changelog</label>
+              <label className="text-sm font-medium text-foreground">Changelog</label>
               <textarea
                 placeholder="What's new in this version?"
                 value={changelog}
                 onChange={(e) => setChangelog(e.target.value)}
-                className="mt-1 w-full p-2 bg-background border border-border rounded text-foreground"
+                className="mt-1 w-full p-2 bg-background border border-border rounded text-foreground placeholder:text-muted-foreground"
                 rows={4}
               />
             </div>
             <Button
               type="submit"
               disabled={loading}
-              className="w-full bg-primary hover:bg-primary-dark text-background"
+              className="w-full bg-primary hover:bg-primary text-primary-foreground"
             >
               {loading ? "Publishing..." : "Publish Update"}
             </Button>
@@ -124,22 +126,22 @@ export function UpdateManager() {
 
       <Card className="bg-card border-border">
         <CardHeader>
-          <CardTitle>Update History</CardTitle>
-          <CardDescription>All published versions</CardDescription>
+          <CardTitle className="text-foreground">Update History</CardTitle>
+          <CardDescription className="text-muted-foreground">All published versions</CardDescription>
         </CardHeader>
         <CardContent>
           {updates.length === 0 ? (
-            <div className="text-center text-muted py-8">No updates published yet</div>
+            <div className="text-center text-muted-foreground py-8">No updates published yet</div>
           ) : (
             <div className="space-y-4">
               {updates.map((update, idx) => (
                 <div key={idx} className="border border-border rounded-lg p-4">
                   <div className="flex justify-between items-start mb-2">
                     <div>
-                      <h3 className="font-semibold">Version {update.version}</h3>
-                      <p className="text-xs text-muted">{new Date(update.publishedAt).toLocaleString()}</p>
+                      <h3 className="font-semibold text-foreground">Version {update.version}</h3>
+                      <p className="text-xs text-muted-foreground">{new Date(update.publishedAt).toLocaleString()}</p>
                     </div>
-                    <Badge className="bg-primary text-background">Latest</Badge>
+                    <Badge className="bg-primary text-primary-foreground">Latest</Badge>
                   </div>
                   <p className="text-sm text-foreground mb-2">{update.changelog}</p>
                   <a

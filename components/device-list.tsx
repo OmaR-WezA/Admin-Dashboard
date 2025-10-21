@@ -41,15 +41,15 @@ export function DeviceList({ devices }: { devices: any[] }) {
       <div className="space-y-4">
         <div className="flex justify-between items-center">
           <div>
-            <h2 className="text-xl font-bold">Connected Devices</h2>
-            <p className="text-sm text-muted">Total: {devices.length}</p>
+            <h2 className="text-xl font-bold text-foreground">Connected Devices</h2>
+            <p className="text-sm text-muted-foreground">Total: {devices.length}</p>
           </div>
         </div>
 
         <div className="grid gap-4">
           {devices.length === 0 ? (
             <Card className="bg-card border-border">
-              <CardContent className="pt-6 text-center text-muted">No devices connected yet</CardContent>
+              <CardContent className="pt-6 text-center text-muted-foreground">No devices connected yet</CardContent>
             </Card>
           ) : (
             devices.map((device) => (
@@ -57,11 +57,11 @@ export function DeviceList({ devices }: { devices: any[] }) {
                 <CardHeader className="pb-3">
                   <div className="flex justify-between items-start">
                     <div>
-                      <CardTitle className="text-lg">{device.deviceName}</CardTitle>
-                      <CardDescription className="text-xs">ID: {device.id}</CardDescription>
+                      <CardTitle className="text-lg text-foreground">{device.deviceName}</CardTitle>
+                      <CardDescription className="text-xs text-muted-foreground">ID: {device.id}</CardDescription>
                     </div>
                     <Badge
-                      className={device.status === "active" ? "bg-success text-background" : "bg-muted text-background"}
+                      className={device.status === "active" ? "bg-accent text-background" : "bg-muted text-foreground"}
                     >
                       {device.status === "active" ? "Active" : "Inactive"}
                     </Badge>
@@ -70,22 +70,22 @@ export function DeviceList({ devices }: { devices: any[] }) {
                 <CardContent className="space-y-4">
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                     <div>
-                      <p className="text-muted">Messages Sent</p>
+                      <p className="text-muted-foreground">Messages Sent</p>
                       <p className="text-lg font-semibold text-primary">{device.totalMessages || 0}</p>
                     </div>
                     <div>
-                      <p className="text-muted">Failed</p>
-                      <p className="text-lg font-semibold text-error">{device.failedMessages || 0}</p>
+                      <p className="text-muted-foreground">Failed</p>
+                      <p className="text-lg font-semibold text-destructive">{device.failedMessages || 0}</p>
                     </div>
                     <div>
-                      <p className="text-muted">Last Active</p>
-                      <p className="text-sm">
+                      <p className="text-muted-foreground">Last Active</p>
+                      <p className="text-sm text-foreground">
                         {device.lastSeen ? new Date(device.lastSeen).toLocaleString() : "Never"}
                       </p>
                     </div>
                     <div>
-                      <p className="text-muted">Version</p>
-                      <p className="text-sm">{device.version || "Unknown"}</p>
+                      <p className="text-muted-foreground">Version</p>
+                      <p className="text-sm text-foreground">{device.version || "Unknown"}</p>
                     </div>
                   </div>
 
@@ -95,8 +95,8 @@ export function DeviceList({ devices }: { devices: any[] }) {
                       disabled={loading === device.id}
                       className={
                         device.status === "active"
-                          ? "bg-error hover:bg-red-600 text-background"
-                          : "bg-success hover:bg-green-600 text-background"
+                          ? "bg-destructive hover:bg-destructive text-destructive-foreground"
+                          : "bg-accent hover:bg-accent text-background"
                       }
                     >
                       {loading === device.id ? "Updating..." : device.status === "active" ? "Disable" : "Enable"}
@@ -104,7 +104,7 @@ export function DeviceList({ devices }: { devices: any[] }) {
                     <Button
                       onClick={() => setSelectedDevice(device)}
                       variant="outline"
-                      className="border-border bg-transparent"
+                      className="border-border text-foreground"
                     >
                       View Details
                     </Button>

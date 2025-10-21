@@ -21,7 +21,7 @@ WHATSAPP_WEB_URL = "https://web.whatsapp.com/"
 TEMPLATE_FILENAME = "whatsapp_template.xlsx"
 
 # Configuration - Update these with your values
-ADMIN_DASHBOARD_URL = "https://your-dashboard.vercel.app"
+ADMIN_DASHBOARD_URL = "https://weza-dashboard-gui.vercel.app"
 DEVICE_ID = str(uuid.uuid4())
 
 def get_device_name():

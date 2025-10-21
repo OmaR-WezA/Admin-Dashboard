@@ -33,43 +33,43 @@ export function LoginForm() {
     <div className="flex items-center justify-center min-h-screen bg-background">
       <Card className="w-full max-w-md bg-card border-border">
         <CardHeader>
-          <CardTitle className="text-2xl">Admin Dashboard</CardTitle>
-          <CardDescription>WhatsApp Sender Management System</CardDescription>
+          <CardTitle className="text-2xl text-foreground">Admin Dashboard</CardTitle>
+          <CardDescription className="text-muted-foreground">WhatsApp Sender Management System</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="text-sm font-medium">Email</label>
+              <label className="text-sm font-medium text-foreground">Email</label>
               <Input
                 type="email"
                 placeholder="admin@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="mt-1 bg-background border-border"
+                className="mt-1 bg-background border-border text-foreground placeholder:text-muted-foreground"
                 required
               />
             </div>
             <div>
-              <label className="text-sm font-medium">Password</label>
+              <label className="text-sm font-medium text-foreground">Password</label>
               <Input
                 type="password"
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="mt-1 bg-background border-border"
+                className="mt-1 bg-background border-border text-foreground placeholder:text-muted-foreground"
                 required
               />
             </div>
-            {error && <p className="text-sm text-error">{error}</p>}
+            {error && <p className="text-sm text-destructive">{error}</p>}
             <Button
               type="submit"
               disabled={loading}
-              className="w-full bg-primary hover:bg-primary-dark text-background"
+              className="w-full bg-primary hover:bg-primary text-primary-foreground"
             >
               {loading ? "Signing in..." : "Sign In"}
             </Button>
           </form>
-          <p className="text-xs text-muted mt-4 text-center">Contact your administrator for credentials</p>
+          <p className="text-xs text-muted-foreground mt-4 text-center">Contact your administrator for credentials</p>
         </CardContent>
       </Card>
     </div>

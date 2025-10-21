@@ -20,8 +20,8 @@ CHROMEDRIVER_PATH = r"C:/chromedriver-win64/chromedriver.exe"
 WHATSAPP_WEB_URL = "https://web.whatsapp.com/"
 TEMPLATE_FILENAME = "whatsapp_template.xlsx"
 
-FIREBASE_API_URL = "https://your-project.firebaseio.com"
-ADMIN_DASHBOARD_URL = "https://your-dashboard.vercel.app"
+FIREBASE_API_URL = "https://whatsapp-sender-admin-default-rtdb.firebaseio.com/"
+ADMIN_DASHBOARD_URL = "https://weza-dashboard-gui.vercel.app"
 DEVICE_ID = str(uuid.uuid4())  # Unique device identifier
 
 def get_device_name():
