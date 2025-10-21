@@ -1,0 +1,8 @@
+tkinter
+pillow
+pandas
+openpyxl
+selenium
+requests
+uuid
+socket

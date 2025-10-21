@@ -1,0 +1,34 @@
+{
+  "rules": {
+    "devices": {
+      "$deviceId": {
+        ".read": "root.child('admin').child(auth.uid).exists()",
+        ".write": "root.child('admin').child(auth.uid).exists() || $deviceId === auth.uid"
+      }
+    },
+    "controls": {
+      "$deviceId": {
+        ".read": "root.child('admin').child(auth.uid).exists()",
+        ".write": "root.child('admin').child(auth.uid).exists()"
+      }
+    },
+    "latestUpdate": {
+      ".read": true,
+      ".write": "root.child('admin').child(auth.uid).exists()"
+    },
+    "updates": {
+      ".read": true,
+      ".write": "root.child('admin').child(auth.uid).exists()"
+    },
+    "logs": {
+      "$deviceId": {
+        ".read": "root.child('admin').child(auth.uid).exists()",
+        ".write": "$deviceId === auth.uid"
+      }
+    },
+    "admin": {
+      ".read": false,
+      ".write": false
+    }
+  }
+}
