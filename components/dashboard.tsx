@@ -139,8 +139,8 @@ export function Dashboard() {
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`py-4 px-2 border-b-2 transition-colors ${activeTab === tab.id
-                  ? "border-primary text-primary"
-                  : "border-transparent text-muted-foreground hover:text-foreground"
+                ? "border-primary text-primary"
+                : "border-transparent text-muted-foreground hover:text-foreground"
                 }`}
             >
               {tab.label}

@@ -12,6 +12,14 @@ export function DeviceList({ devices }: { devices: any[] }) {
   const [loading, setLoading] = useState<string | null>(null)
   const [selectedDevice, setSelectedDevice] = useState<any>(null)
 
+  const activeDevices = devices.filter((device) => {
+    if (!device.lastSeen) return false
+    const lastSeenTime = new Date(device.lastSeen).getTime()
+    const now = new Date().getTime()
+    const twoMinutesAgo = now - 2 * 60 * 1000
+    return lastSeenTime > twoMinutesAgo
+  })
+
   const toggleDevice = async (deviceId: string, currentStatus: string) => {
     setLoading(deviceId)
     try {
@@ -42,17 +50,19 @@ export function DeviceList({ devices }: { devices: any[] }) {
         <div className="flex justify-between items-center">
           <div>
             <h2 className="text-xl font-bold text-foreground">Connected Devices</h2>
-            <p className="text-sm text-muted-foreground">Total: {devices.length}</p>
+            <p className="text-sm text-muted-foreground">
+              Active: {activeDevices.length} / Total: {devices.length}
+            </p>
           </div>
         </div>
 
         <div className="grid gap-4">
-          {devices.length === 0 ? (
+          {activeDevices.length === 0 ? (
             <Card className="bg-card border-border">
               <CardContent className="pt-6 text-center text-muted-foreground">No devices connected yet</CardContent>
             </Card>
           ) : (
-            devices.map((device) => (
+            activeDevices.map((device) => (
               <Card key={device.id} className="bg-card border-border">
                 <CardHeader className="pb-3">
                   <div className="flex justify-between items-start">

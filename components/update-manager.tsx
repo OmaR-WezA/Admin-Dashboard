@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useState, useEffect } from "react"
 import { db } from "@/lib/firebase"
-import { ref, set, onValue } from "firebase/database"
+import { ref, onValue } from "firebase/database"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -46,21 +46,19 @@ export function UpdateManager() {
 
     setLoading(true)
     try {
-      const updateRef = ref(db, `updates/${Date.now()}`)
-      await set(updateRef, {
-        version,
-        downloadUrl,
-        changelog,
-        publishedAt: new Date().toISOString(),
+      const response = await fetch("/api/devices/publish-update", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          version,
+          downloadUrl,
+          changelog,
+        }),
       })
 
-      // Also set as latest update for quick access
-      await set(ref(db, "latestUpdate"), {
-        version,
-        downloadUrl,
-        changelog,
-        publishedAt: new Date().toISOString(),
-      })
+      if (!response.ok) {
+        throw new Error("Failed to publish update")
+      }
 
       alert("Update published successfully!")
       setVersion("")
