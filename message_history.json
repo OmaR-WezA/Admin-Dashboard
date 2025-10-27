@@ -1,0 +1,157 @@
+[
+  {
+    "timestamp": "2025-10-27T02:55:02.559857",
+    "total_sent": 3,
+    "total_failed": 1,
+    "messages": [
+      {
+        "phone": "201550301267",
+        "status": "success",
+        "timestamp": "2025-10-27T02:54:31.757540",
+        "message": "🎨 لو مهتم بتعلم الجرافيك ديزاين مجانًا\nرد على الرس"
+      },
+      {
+        "phone": "201032822563",
+        "status": "failed",
+        "timestamp": "2025-10-27T02:54:40.934274",
+        "message": "Hello, Number 2\nweza#0001"
+      },
+      {
+        "phone": "201550301267",
+        "status": "success",
+        "timestamp": "2025-10-27T02:54:47.503650",
+        "message": "Hello, Number 3\nweza#0002"
+      },
+      {
+        "phone": "201150665030",
+        "status": "success",
+        "timestamp": "2025-10-27T02:54:57.379264",
+        "message": "Hello, Number 4\nweza#0003"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-10-27T02:56:50.099304",
+    "total_sent": 3,
+    "total_failed": 1,
+    "messages": [
+      {
+        "phone": "201550301267",
+        "status": "success",
+        "timestamp": "2025-10-27T02:56:17.037950",
+        "message": "سسس\nweza#0000"
+      },
+      {
+        "phone": "201032822563",
+        "status": "failed",
+        "timestamp": "2025-10-27T02:56:27.559738",
+        "message": "سسس\nweza#0001"
+      },
+      {
+        "phone": "201550301267",
+        "status": "success",
+        "timestamp": "2025-10-27T02:56:35.071102",
+        "message": "سسس\nweza#0002"
+      },
+      {
+        "phone": "201150665030",
+        "status": "success",
+        "timestamp": "2025-10-27T02:56:44.896571",
+        "message": "سسس\nweza#0003"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-10-27T03:02:18.989053",
+    "total_sent": 4,
+    "total_failed": 0,
+    "messages": [
+      {
+        "phone": "201550301267",
+        "status": "success",
+        "timestamp": "2025-10-27T03:01:57.064380",
+        "message": "🎨 لو مهتم بتعلم الجرافيك ديزاين مجانًا\nرد على الرس"
+      },
+      {
+        "phone": "201032822563",
+        "status": "success",
+        "timestamp": "2025-10-27T03:02:03.662927",
+        "message": "Hello, Number 2\nweza#0001"
+      },
+      {
+        "phone": "201550301267",
+        "status": "success",
+        "timestamp": "2025-10-27T03:02:10.148059",
+        "message": "Hello, Number 3\nweza#0002"
+      },
+      {
+        "phone": "201150665030",
+        "status": "success",
+        "timestamp": "2025-10-27T03:02:16.784734",
+        "message": "Hello, Number 4\nweza#0003"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-10-27T03:04:06.942994",
+    "total_sent": 3,
+    "total_failed": 1,
+    "messages": [
+      {
+        "phone": "201550301267",
+        "status": "success",
+        "timestamp": "2025-10-27T03:03:34.153495",
+        "message": "🎨 لو مهتم بتعلم الجرافيك ديزاين مجانًا\nرد على الرس"
+      },
+      {
+        "phone": "201032822563",
+        "status": "failed",
+        "timestamp": "2025-10-27T03:03:43.722923",
+        "message": "Hello, Number 2\nweza#0001"
+      },
+      {
+        "phone": "201550301267",
+        "status": "success",
+        "timestamp": "2025-10-27T03:03:51.942941",
+        "message": "Hello, Number 3\nweza#0002"
+      },
+      {
+        "phone": "201150665030",
+        "status": "success",
+        "timestamp": "2025-10-27T03:04:01.767978",
+        "message": "Hello, Number 4\nweza#0003"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-10-27T03:05:30.110674",
+    "total_sent": 3,
+    "total_failed": 1,
+    "messages": [
+      {
+        "phone": "201550301267",
+        "status": "success",
+        "timestamp": "2025-10-27T03:04:57.412709",
+        "message": "🎨 لو مهتم بتعلم الجرافيك ديزاين مجانًا\nرد على الرس"
+      },
+      {
+        "phone": "201032822563",
+        "status": "failed",
+        "timestamp": "2025-10-27T03:05:06.354148",
+        "message": "Hello, Number 2\nweza#0001"
+      },
+      {
+        "phone": "201550301267",
+        "status": "success",
+        "timestamp": "2025-10-27T03:05:14.009036",
+        "message": "Hello, Number 3\nweza#0002"
+      },
+      {
+        "phone": "201150665030",
+        "status": "success",
+        "timestamp": "2025-10-27T03:05:24.927006",
+        "message": "Hello, Number 4\nweza#0003"
+      }
+    ]
+  }
+]

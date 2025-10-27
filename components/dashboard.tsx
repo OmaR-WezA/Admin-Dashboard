@@ -64,13 +64,31 @@ export function Dashboard() {
 
   useEffect(() => {
     const logsRef = ref(db, "logs")
-    const unsubscribe = onValue(logsRef, (snapshot) => {
-      const data = snapshot.val()
-      if (data) {
-        const logList = Array.isArray(data) ? data : Object.values(data)
-        setLogs(logList as string[])
-      }
-    })
+    const unsubscribe = onValue(
+      logsRef,
+      (snapshot) => {
+        try {
+          const data = snapshot.val()
+          if (data) {
+            let logList: string[] = []
+            if (Array.isArray(data)) {
+              logList = data.filter((log) => typeof log === "string")
+            } else if (typeof data === "object") {
+              logList = Object.values(data).filter((log) => typeof log === "string") as string[]
+            }
+            setLogs(logList)
+          } else {
+            setLogs([])
+          }
+        } catch (error) {
+          console.error("[v0] Error processing logs:", error)
+          setLogs([])
+        }
+      },
+      (error) => {
+        console.error("[v0] Firebase logs error:", error)
+      },
+    )
 
     return () => unsubscribe()
   }, [])
@@ -93,6 +111,7 @@ export function Dashboard() {
         body: JSON.stringify({
           message: broadcastMessage,
           timestamp: new Date().toISOString(),
+          targetDevices: devices.filter((d) => d.status === "active").map((d) => d.id),
         }),
       })
 
@@ -101,10 +120,11 @@ export function Dashboard() {
         setBroadcastMessage("")
         setShowBroadcast(false)
       } else {
-        alert("Failed to broadcast message")
+        const error = await response.json()
+        alert(`Failed to broadcast: ${error.error}`)
       }
     } catch (error) {
-      console.error("Error broadcasting:", error)
+      console.error("[v0] Error broadcasting:", error)
       alert("Error broadcasting message")
     } finally {
       setLoading(false)
@@ -139,8 +159,8 @@ export function Dashboard() {
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`py-4 px-2 border-b-2 transition-colors ${activeTab === tab.id
-                ? "border-primary text-primary"
-                : "border-transparent text-muted-foreground hover:text-foreground"
+                  ? "border-primary text-primary"
+                  : "border-transparent text-muted-foreground hover:text-foreground"
                 }`}
             >
               {tab.label}
@@ -172,6 +192,16 @@ export function Dashboard() {
                 <CardContent>
                   <div className="text-3xl font-bold text-destructive">{stats.failedMessages}</div>
                   <p className="text-xs text-muted-foreground mt-1">Requires attention</p>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-card border-border">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-sm font-medium text-muted-foreground">Connected Devices</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-3xl font-bold text-accent">{devices.length}</div>
+                  <p className="text-xs text-muted-foreground mt-1">Total connected</p>
                 </CardContent>
               </Card>
 
@@ -247,13 +277,13 @@ export function Dashboard() {
           <DialogHeader>
             <DialogTitle className="text-foreground">System Logs</DialogTitle>
           </DialogHeader>
-          <div className="space-y-2 bg-background p-4 rounded border border-border">
+          <div className="space-y-2 bg-background p-4 rounded border border-border max-h-80 overflow-y-auto">
             {logs.length === 0 ? (
               <p className="text-muted-foreground text-sm">No logs available</p>
             ) : (
               logs.map((log, idx) => (
-                <p key={idx} className="text-xs text-muted-foreground font-mono">
-                  {log}
+                <p key={idx} className="text-xs text-muted-foreground font-mono break-words">
+                  {typeof log === "string" ? log : JSON.stringify(log)}
                 </p>
               ))
             )}

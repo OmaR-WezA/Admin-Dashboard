@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { DeviceDetailModal } from "./device-detail-modal"
+import { MessageHistory } from "./message-history"
 
 export function DeviceList({ devices }: { devices: any[] }) {
   const [loading, setLoading] = useState<string | null>(null)
@@ -50,9 +51,7 @@ export function DeviceList({ devices }: { devices: any[] }) {
         <div className="flex justify-between items-center">
           <div>
             <h2 className="text-xl font-bold text-foreground">Connected Devices</h2>
-            <p className="text-sm text-muted-foreground">
-              Active: {activeDevices.length} / Total: {devices.length}
-            </p>
+            <p className="text-sm text-muted-foreground">Active: {activeDevices.length}</p>
           </div>
         </div>
 
@@ -68,7 +67,13 @@ export function DeviceList({ devices }: { devices: any[] }) {
                   <div className="flex justify-between items-start">
                     <div>
                       <CardTitle className="text-lg text-foreground">{device.deviceName}</CardTitle>
-                      <CardDescription className="text-xs text-muted-foreground">ID: {device.id}</CardDescription>
+                      <CardDescription
+                        className="text-xs text-muted-foreground mt-2 font-mono bg-background p-2 rounded border border-border cursor-pointer hover:bg-input transition-colors"
+                        onClick={() => navigator.clipboard.writeText(device.id)}
+                        title="Click to copy"
+                      >
+                        🆔 ID: {device.id}
+                      </CardDescription>
                     </div>
                     <Badge
                       className={device.status === "active" ? "bg-accent text-background" : "bg-muted text-foreground"}
@@ -111,6 +116,7 @@ export function DeviceList({ devices }: { devices: any[] }) {
                     >
                       {loading === device.id ? "Updating..." : device.status === "active" ? "Disable" : "Enable"}
                     </Button>
+                    <MessageHistory device={device} />
                     <Button
                       onClick={() => setSelectedDevice(device)}
                       variant="outline"
