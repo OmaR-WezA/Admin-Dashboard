@@ -9,7 +9,7 @@ const geistMono = Geist_Mono({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "WhatsApp Sender Admin Dashboard",
   description: "Manage all WhatsApp Sender instances",
-    generator: 'v0.app'
+  generator: 'weza-production'
 }
 
 export default function RootLayout({
